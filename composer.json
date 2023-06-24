@@ -1,24 +1,29 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ittech/laravel-payme",
+    "description": "This is my package laravel-payme",
     "keywords": [
-        ":vendor_name",
+        "Ittech",
         "laravel",
-        ":package_slug"
+        "laravel-payme",
+        "payme",
+        "laravel-payme-client",
+        "payme-client"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ittech/laravel-payme",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Sodiqmirzo Sattorov",
+            "email": "mr.sodiqmirzosattorov17@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.13.0",
-        "illuminate/contracts": "^9.0"
+        "illuminate/contracts": "^9.0",
+        "spatie/laravel-data": "^3.6",
+        "spatie/laravel-http-logger": "^1.10",
+        "spatie/laravel-package-tools": "^1.13.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -35,13 +40,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Ittech\\Payme\\": "src",
+            "Ittech\\Payme\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Ittech\\Payme\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Ittech\\Payme\\PaymeServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Payme": "Ittech\\Payme\\Facades\\Payme"
             }
         }
     },
