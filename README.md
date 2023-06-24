@@ -1,4 +1,4 @@
-# This is my package laravel-payme
+# This is my package laravel-payme-client
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ittech/laravel-payme.svg?style=flat-square)](https://packagist.org/packages/ittech/laravel-payme)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ittech/laravel-payme/run-tests?label=tests)](https://github.com/ittech/laravel-payme/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -11,9 +11,12 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-payme.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-payme)
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can
+support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards
+on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -21,13 +24,6 @@ You can install the package via composer:
 
 ```bash
 composer require ittech/laravel-payme
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-payme-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -40,13 +36,14 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'proxy_url' => env('PAYME_PROXY_URL', ''),
+    'proxy_proto' => env('PAYME_PROXY_PROTO', ''),
+    'proxy_host' => env('PAYME_PROXY_HOST', ''),
+    'proxy_port' => env('PAYME_PROXY_PORT', ''),
+    'base_url' => env('PAYME_BASE_URL', 'https://checkout.paycom.uz'),
+    'merchant_id' => env('PAYME_MERCHANT_ID', ''),
+    'key' => env('PAYME_KEY', ''),
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-payme-views"
 ```
 
 ## Usage
@@ -54,12 +51,6 @@ php artisan vendor:publish --tag="laravel-payme-views"
 ```php
 $payme = new Ittech\Payme();
 echo $payme->echoPhrase('Hello, Ittech!');
-```
-
-## Testing
-
-```bash
-composer test
 ```
 
 ## Changelog
