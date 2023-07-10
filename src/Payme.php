@@ -6,6 +6,7 @@ use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Ittech\Payme\Exceptions\PaymeException;
 use Ittech\Payme\Services\CardService;
+use Ittech\Payme\Services\ReceiptService;
 use Throwable;
 
 class Payme
@@ -32,5 +33,17 @@ class Payme
             'X-Auth' => config('payme.merchant_id'),
         ]);
         return new CardService($client);
+    }
+
+    public function receipt(): ReceiptService
+    {
+        $merchant_id = config('payme.merchant_id');
+        $key = config('payme.key');
+
+        $client = $this->client->withHeaders([
+            'X-Auth' => $merchant_id . ':' . $key,
+        ]);
+
+        return new ReceiptService($client);
     }
 }

@@ -7,7 +7,7 @@ use Ittech\Payme\Requests\BaseRequest;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\DataCollection;
 
-class CreateCard extends BaseRequest
+class CreateCardRequest extends BaseRequest
 {
     public function __construct(
 //        #[DataCollectionOf(Card::class)]

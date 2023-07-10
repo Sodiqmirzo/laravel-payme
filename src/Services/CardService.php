@@ -3,16 +3,16 @@
 namespace Ittech\Payme\Services;
 
 use Ittech\Payme\Dtos\Card;
-use Ittech\Payme\Requests\Card\CreateCard;
+use Ittech\Payme\Requests\Card\CreateCardRequest;
 use Ittech\Payme\Responses\Card\CardResponse;
 use Ittech\Payme\Responses\Card\GetVerifyCodeResponse;
 
 class CardService extends BaseService
 {
-    public function create(CreateCard|string $number, string $expire, bool $save = false): CardResponse
+    public function create(CreateCardRequest|string $number, string $expire, bool $save = false): CardResponse
     {
-        if (!$number instanceof CreateCard) {
-            $number = new CreateCard(new Card($number, $expire), $save);
+        if (!$number instanceof CreateCardRequest) {
+            $number = new CreateCardRequest(new Card($number, $expire), $save);
         }
 
         $response = $this->sendRequest('cards.create', $number->toArray());
