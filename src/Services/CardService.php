@@ -17,7 +17,7 @@ class CardService extends BaseService
 
         $response = $this->sendRequest('cards.create', $number->toArray());
 
-        return CardResponse::from($response);
+        return CardResponse::from($response['card']);
     }
 
     public function verifyCode(string $token): GetVerifyCodeResponse
@@ -31,7 +31,7 @@ class CardService extends BaseService
     {
         $response = $this->sendRequest('cards.verify', compact('token', 'code'));
 
-        return CardResponse::from($response);
+        return CardResponse::from($response['card']);
     }
 
     public function check(string $token): CardResponse

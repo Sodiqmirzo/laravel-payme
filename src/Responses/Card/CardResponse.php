@@ -19,6 +19,6 @@ class CardResponse extends BaseResponse
 
     public function isOk(): bool
     {
-        return $this->token !== null && $this->recurrent && $this->verify;
+        return $this->token !== null && $this->recurrent;
     }
 }
