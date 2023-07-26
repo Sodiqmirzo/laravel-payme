@@ -19,7 +19,7 @@ class ReceiptService extends BaseService
      */
     public function create(CreateRequest $dto): CreateResponse
     {
-        $response = $this->sendRequest('cards.create', $dto->toArray());
+        $response = $this->sendRequest('receipts.create', $dto->toArray());
         return CreateResponse::from(['receipt' => $response]);
     }
 
