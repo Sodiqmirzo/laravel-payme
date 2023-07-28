@@ -20,14 +20,15 @@ class CreateResponse extends BaseResponse
         public int     $commission,
         public array   $merchant,
         public array   $meta,
-        public ?string $card,
-        public ?string $category,
+        public ?array  $card,
+        public ?array  $creator,
+        public ?array  $payer,
+        public ?array  $category,
         public ?string $error,
         public ?string $processing_id,
         public string  $description = '',
         public array   $detail = [],
         public array   $account = [],
-
     )
     {
     }

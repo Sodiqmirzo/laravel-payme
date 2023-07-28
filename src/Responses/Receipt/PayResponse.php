@@ -19,14 +19,16 @@ class PayResponse extends BaseResponse
         public int     $currency,
         public int     $commission,
         public array   $merchant,
-        public ?string $meta,
+        public int     $processing_id,
         public array   $card,
-        public ?string $category,
-        public ?string $error,
-        public ?string $processing_id,
+        public array   $payer,
+        public array $account,
+        public ?array  $meta,
+        public ?array  $creator,
+        public ?array  $category,
+        public ?array  $error,
         public ?string $description,
         public ?array  $detail,
-        public array   $account,
 
     )
     {

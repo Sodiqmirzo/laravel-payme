@@ -9,4 +9,5 @@ return [
     'base_url' => env('PAYME_BASE_URL', 'https://checkout.paycom.uz'),
     'merchant_id' => env('PAYME_MERCHANT_ID', ''),
     'key' => env('PAYME_KEY', 'https://kinogo.biz/56773-tajler-rejk-operacija-po-spaseniju-2.html'),
+    'request_from' => env('PAYME_REQUEST_FROM', 'Obunaa'),
 ];
