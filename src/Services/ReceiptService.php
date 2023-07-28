@@ -20,7 +20,7 @@ class ReceiptService extends BaseService
     public function create(CreateRequest $dto): CreateResponse
     {
         $response = $this->sendRequest('receipts.create', $dto->toArray());
-        return CreateResponse::from(['receipt' => $response]);
+        return CreateResponse::from($response['receipt']);
     }
 
     /**
@@ -29,7 +29,7 @@ class ReceiptService extends BaseService
     public function pay(string $id, string $token, array $payer = []): PayResponse
     {
         $response = $this->sendRequest('receipts.pay', compact('id', 'token', 'payer'));
-        return PayResponse::from(['receipt' => $response]);
+        return PayResponse::from($response['receipt']);
     }
 
     /**
@@ -47,7 +47,7 @@ class ReceiptService extends BaseService
     public function cancel(string $id): CancelResponse
     {
         $request = $this->sendRequest('receipts.cancel', compact('id'));
-        return CancelResponse::from(['receipt' => $request]);
+        return CancelResponse::from($request['receipt']);
     }
 
     /**
