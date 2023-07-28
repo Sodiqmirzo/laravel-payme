@@ -31,10 +31,9 @@ class Payme
 
     public function card(): CardService
     {
-        $client = $this->client->withHeaders([
-            'X-Auth' => config('payme.merchant_id'),
-        ]);
-        return new CardService($client);
+        $merchant_id = config('payme.merchant_id');
+
+        return new CardService($this->client->xAuthHeader($merchant_id));
     }
 
     public function receipt(): ReceiptService
@@ -42,10 +41,6 @@ class Payme
         $merchant_id = config('payme.merchant_id');
         $key = config('payme.key');
 
-        $client = $this->client->withHeaders([
-            'X-Auth' => $merchant_id . ':' . $key,
-        ]);
-
-        return new ReceiptService($client);
+        return new ReceiptService($this->client->xAuthHeader($merchant_id . ':' . $key));
     }
 }

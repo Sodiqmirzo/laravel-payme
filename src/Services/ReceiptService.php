@@ -26,7 +26,7 @@ class ReceiptService extends BaseService
     /**
      * @throws RequestException
      */
-    public function pay(string $id, string $token, array $payer = []): PayResponse
+    public function pay(string $id, string $token, array $payer = null): PayResponse
     {
         $response = $this->sendRequest('receipts.pay', compact('id', 'token', 'payer'));
         return PayResponse::from($response['receipt']);
