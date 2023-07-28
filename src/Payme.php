@@ -13,8 +13,6 @@ class Payme
 {
     private PendingRequest $client;
 
-    private ?string $request_id = null;
-
     public function __construct()
     {
         try {
@@ -23,20 +21,12 @@ class Payme
             $options = is_string($proxy_url) && str_contains($proxy_url, '://') && strlen($proxy_url) > 12 ? ['proxy' => $proxy_url] : [];
 
             $this->client = Http::log()->baseUrl($config['base_url'])
-                ->withHeaders($this->request_id ? ['request_id' => $this->request_id] : [])
                 ->withHeaders(['Request-From' => $config['request_from'] ?? 'Merchant Gateway'])
                 ->asJson()->withOptions($options);
 
         } catch (Throwable) {
             throw new PaymeException('Payme config not found', -1024);
         }
-    }
-
-    public function withRequestId(string $request_id): self
-    {
-        $this->request_id = $request_id;
-
-        return $this;
     }
 
     public function card(): CardService
