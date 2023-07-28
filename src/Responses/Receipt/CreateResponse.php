@@ -2,6 +2,7 @@
 
 namespace Ittech\Payme\Responses\Receipt;
 
+use Ittech\Payme\Enums\ReceiptState;
 use Ittech\Payme\Responses\BaseResponse;
 
 class CreateResponse extends BaseResponse
@@ -27,7 +28,7 @@ class CreateResponse extends BaseResponse
         public ?string $error,
         public ?string $processing_id,
         public string  $description = '',
-        public array   $detail = [],
+        public ?array   $detail = [],
         public array   $account = [],
     )
     {
@@ -35,6 +36,6 @@ class CreateResponse extends BaseResponse
 
     public function isOk(): bool
     {
-        return $this->state === 0 && $this->_id !== null;
+        return $this->state === ReceiptState::NEW->value && $this->_id !== null;
     }
 }

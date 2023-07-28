@@ -42,15 +42,9 @@ class Payme
         $merchant_id = config('payme.merchant_id');
         $key = config('payme.key');
 
-        $headers = $this->client->getOptions()['headers'];
-
-        $client = $this->client;
-
-        if (!isset($headers['X-Auth'])) {
-            $client = $this->client->withHeaders([
-                'X-Auth' => $merchant_id . ':' . $key,
-            ]);
-        }
+        $client = $this->client->withHeaders([
+            'X-Auth' => $merchant_id . ':' . $key,
+        ]);
 
         return new ReceiptService($client);
     }
