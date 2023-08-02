@@ -8,6 +8,8 @@ use Ittech\Payme\Exceptions\PaymeException;
 use Ittech\Payme\Services\CardService;
 use Ittech\Payme\Services\ReceiptService;
 use Throwable;
+use Uzbek\LaravelSvgate\Exceptions\PaymentNotFoundException;
+use Uzbek\LaravelSvgate\Exceptions\SvgateException;
 
 class Payme
 {
@@ -21,7 +23,7 @@ class Payme
             $options = is_string($proxy_url) && str_contains($proxy_url, '://') && strlen($proxy_url) > 12 ? ['proxy' => $proxy_url] : [];
 
             $this->client = Http::log()->baseUrl($config['base_url'])
-                ->withHeaders(['Request-From' => $config['request_from'] ?? 'Merchant Gateway'])
+                ->withHeaders(['x-requested-with' => $config['request_from'] ?? 'Merchant Gateway'])
                 ->asJson()->withOptions($options);
 
         } catch (Throwable) {
